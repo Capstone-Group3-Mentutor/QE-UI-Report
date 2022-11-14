@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add Class by Admin","Input Special Character on Add Class Field","SUCCESS","2022-11-13T19:38:19.955+07:00[Asia/Bangkok]","0.0","26.37"
+"User Login Functionality","Verify data inputted was cleaned while page refreshed","SUCCESS","2022-11-13T22:29:24.85+07:00[Asia/Bangkok]","0.0","0.06"

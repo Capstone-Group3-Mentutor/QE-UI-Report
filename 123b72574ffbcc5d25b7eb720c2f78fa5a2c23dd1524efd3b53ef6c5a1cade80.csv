@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login Page Element and Interaction","Verify email and password field is interactable","SUCCESS","2022-11-10T21:54:48.624+07:00[Asia/Bangkok]","0.0","53.09"
+"Login Page Element and Interaction","Verify expired message when press BACK button","SUCCESS","2022-11-10T21:58:58.576+07:00[Asia/Bangkok]","0.0","53.52"
+"User Login Functionality","Verify minimal length of allowed password input","SUCCESS","2022-11-11T02:22:51.603+07:00[Asia/Bangkok]","0.0","37.5"

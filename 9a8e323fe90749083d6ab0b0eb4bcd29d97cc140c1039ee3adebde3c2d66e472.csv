@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User's Name and Role","Verify User's name visibility","SUCCESS","2022-11-13T23:56:50.463+07:00[Asia/Bangkok]","0.0","60.72"
+"User's Name and Role","Verify User's role visibility","SUCCESS","2022-11-13T23:57:52.117+07:00[Asia/Bangkok]","0.0","10.49"
+"User's Name and Role","Verify User's profile picture visibility","SUCCESS","2022-11-13T23:58:03.409+07:00[Asia/Bangkok]","0.0","5.08"
+"User's Name and Role","Verify User's name and role font size","SUCCESS","2022-11-13T23:58:09.293+07:00[Asia/Bangkok]","0.0","10.2"

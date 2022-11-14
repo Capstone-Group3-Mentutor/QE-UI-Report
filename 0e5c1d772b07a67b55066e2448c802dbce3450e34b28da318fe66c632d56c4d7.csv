@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify user login at the same times with different browser","FAILURE","2022-11-13T23:30:19.224+07:00[Asia/Bangkok]","0.0","16.6"
+"User Login Functionality","Verify accessing webapp after close without logout","FAILURE","2022-11-13T23:30:35.871+07:00[Asia/Bangkok]","0.0","15.38"
+"Mentee Home Page Task Bar","Verify Task Bar visibility when there is no mentee due task","FAILURE","2022-11-13T23:54:26.89+07:00[Asia/Bangkok]","0.0","10.26"
+"Mentee Task Page Task Bar","Verify Task Bar visibility when there is no mentee due task","FAILURE","2022-11-14T01:06:57.166+07:00[Asia/Bangkok]","0.0","10.24"
+"Register New Member","Verify register new member with Copy-Paste on field password","FAILURE","2022-11-13T22:37:51.507+07:00[Asia/Bangkok]","0.0","10.27"
+"Register New Member","Verify password is masked when eye icon is not clicked","FAILURE","2022-11-13T23:00:05.611+07:00[Asia/Bangkok]","0.0","10.26"
+"Register New Member","Verify password is masked when eye icon is clicked","FAILURE","2022-11-13T23:00:15.901+07:00[Asia/Bangkok]","0.0","10.21"

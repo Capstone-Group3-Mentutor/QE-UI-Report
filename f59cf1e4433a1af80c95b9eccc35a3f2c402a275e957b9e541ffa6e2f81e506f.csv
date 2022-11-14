@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login Page Performance","Verify accessing webapp trough link","SUCCESS","2022-11-13T15:09:12.581+07:00[Asia/Bangkok]","0.0","0.02"
+"Login Page Performance","Verify functionallity when multiple Browser instances open","SUCCESS","2022-11-13T15:09:12.622+07:00[Asia/Bangkok]","0.0","0.01"
+"Login Page Performance","Verify critical element visibility when font resized","SUCCESS","2022-11-13T15:09:12.65+07:00[Asia/Bangkok]","0.0","0.03"

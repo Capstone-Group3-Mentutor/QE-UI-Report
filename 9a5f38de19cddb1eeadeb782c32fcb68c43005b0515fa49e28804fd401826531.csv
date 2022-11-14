@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentee Task Page Task Bar","Verify Task file visibility","SUCCESS","2022-11-14T01:07:35.832+07:00[Asia/Bangkok]","0.0","10.23"
+"Mentee Task Page Task Bar","Verify Submit your task visibility","SUCCESS","2022-11-14T01:08:16.715+07:00[Asia/Bangkok]","0.0","10.23"
+"Mentee Task Page Task Bar","Verify Submit your task functionality","SUCCESS","2022-11-14T01:08:26.976+07:00[Asia/Bangkok]","0.0","10.18"
+"Add new member element visibility","Verify all Add new member page element visibility using automated element inspector","SUCCESS","2022-11-13T22:37:08.753+07:00[Asia/Bangkok]","0.0","11.87"
+"Add new member element visibility","Verify Page Title visibility","SUCCESS","2022-11-13T22:37:20.654+07:00[Asia/Bangkok]","0.0","10.24"
+"Choose Task File Button","Verify submit valid file with Choose Task File Button","SUCCESS","2022-11-13T23:24:48.534+07:00[Asia/Bangkok]","0.0","11.53"
+"Choose Task File Button","Verify submit invalid file with Choose Task File Button","SUCCESS","2022-11-13T23:25:00.116+07:00[Asia/Bangkok]","0.0","10.3"

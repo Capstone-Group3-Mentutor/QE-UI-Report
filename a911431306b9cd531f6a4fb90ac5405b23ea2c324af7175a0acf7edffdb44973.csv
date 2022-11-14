@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Modal of Edit Users by Admin","Verify Modal Edit Element visibility","SUCCESS","2022-11-13T16:37:04.594+07:00[Asia/Bangkok]","0.0","5.62"
+"Modal of Edit Users by Admin","Input special character on Name field","SUCCESS","2022-11-13T16:37:26.401+07:00[Asia/Bangkok]","0.0","6.4"
+"Modal of Edit Users by Admin","Input Invalid Email on Email field","SUCCESS","2022-11-13T16:37:33.864+07:00[Asia/Bangkok]","0.0","6.47"
+"Modal of Edit Users by Admin","Input valid Email on Email field","SUCCESS","2022-11-13T16:37:41.45+07:00[Asia/Bangkok]","0.0","6.11"
+"Modal of Edit Users by Admin","Verify Dropdown Button functionality","SUCCESS","2022-11-13T16:37:48.497+07:00[Asia/Bangkok]","0.0","6.3"
+"Modal of Edit Users by Admin","Input alphabet on Name field","SUCCESS","2022-11-13T17:20:23.012+07:00[Asia/Bangkok]","0.0","9.81"
+"Modal of Edit Users by Admin","Input numeric on Name field","SUCCESS","2022-11-13T17:20:33.875+07:00[Asia/Bangkok]","0.0","9.81"

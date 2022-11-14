@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Register New Member","Verify register new member with blank on field name","SUCCESS","2022-11-12T01:43:38.7+07:00[Asia/Bangkok]","0.0","12.66"
+"Register New Member","Verify register new member with Multiple Space on field name","SUCCESS","2022-11-12T01:51:20.957+07:00[Asia/Bangkok]","0.0","13.58"
+"Register New Member","Verify register new member with Copy-Paste on field name","SUCCESS","2022-11-12T01:58:06.799+07:00[Asia/Bangkok]","0.0","12.77"
+"Register New Member","Verify default name field placeholder","SUCCESS","2022-11-12T02:02:27.836+07:00[Asia/Bangkok]","0.0","12.55"

@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Edit Class Functionality","Verify update class status to non_active","ERROR","2022-11-12T21:17:52.557+07:00[Asia/Bangkok]","0.0","11.88"
+"Submit Button Functionality","Input valid data on edit class field and choose inactive class","ERROR","2022-11-12T21:20:16.374+07:00[Asia/Bangkok]","0.0","13.39"
+"Submit Button Functionality","Input ""<valid data>"" with minimum character allowed on edit class field and didn't choose status class","ERROR","2022-11-12T21:20:57.514+07:00[Asia/Bangkok]","0.0","13.32"
+"Submit Button Functionality","Input ""<valid data>"" with maximum character allowed on edit class field and choose active class","FAILURE","2022-11-12T21:21:44.972+07:00[Asia/Bangkok]","0.0","22.23"
+"Submit Button Functionality","Input invalid data on edit class field and choose inactive class","ERROR","2022-11-12T21:22:08.199+07:00[Asia/Bangkok]","0.0","10.23"
+"Submit Button Functionality","Input invalid data on edit class field and didn't choose status class","ERROR","2022-11-12T21:22:29.655+07:00[Asia/Bangkok]","0.0","10.22"
+"Submit Button Functionality","Input empty data on edit class field and didn't choose active class","ERROR","2022-11-12T21:22:58.188+07:00[Asia/Bangkok]","0.0","22.68"

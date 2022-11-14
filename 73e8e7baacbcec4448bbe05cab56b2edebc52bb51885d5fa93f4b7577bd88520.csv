@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Register New Member","Verify register new member with valid email format","SUCCESS","2022-11-11T22:52:11.893+07:00[Asia/Bangkok]","0.0","37.93"
+"Register New Member","Verify register new member with already registered email","SUCCESS","2022-11-11T22:52:50.578+07:00[Asia/Bangkok]","0.0","44.11"
+"Register New Member","Verify if Class is mandatory","SUCCESS","2022-11-12T01:37:43.939+07:00[Asia/Bangkok]","0.0","30.69"
+"Register New Member","Verify pop up message when failed register new users","SUCCESS","2022-11-12T02:09:58.661+07:00[Asia/Bangkok]","0.0","59.27"

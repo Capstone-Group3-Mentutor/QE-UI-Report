@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentor Profile Page's Edit Button","Verify Edit Button location","SUCCESS","2022-11-13T22:15:18.795+07:00[Asia/Bangkok]","0.0","1.16"
+"Mentor Profile Page's Profile Picture","Verify User Profile picture location","SUCCESS","2022-11-13T22:15:20.04+07:00[Asia/Bangkok]","0.0","0.05"
+"Mentor Profile Page's Profile Picture","Verify User Profile picture not interactable","SUCCESS","2022-11-13T22:15:20.143+07:00[Asia/Bangkok]","0.0","0.04"
+"Mentor Profile Page's Profile Picture","Verify Mentor profile detail location","SUCCESS","2022-11-13T22:15:20.22+07:00[Asia/Bangkok]","0.0","0.04"
+"Mentor Profile Page's Page Title","Verify Page Title location on Mentee Profile Page","SUCCESS","2022-11-13T22:15:20.29+07:00[Asia/Bangkok]","0.0","0.03"
+"Mentor Profile Page's Page Title","Verify Page Title has biggest font on Mentee Profile Page","SUCCESS","2022-11-13T22:15:20.369+07:00[Asia/Bangkok]","0.0","0.04"

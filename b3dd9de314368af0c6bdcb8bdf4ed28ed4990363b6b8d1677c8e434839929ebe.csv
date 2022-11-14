@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add Class by Admin","Input Numeric on Add Class Field","ERROR","2022-11-10T21:16:12.849+07:00[Asia/Bangkok]","0.0","485.71"
+"Add Class by Admin","Input Special Character on Add Class Field","ERROR","2022-11-10T21:24:18.577+07:00[Asia/Bangkok]","0.0","162.22"
+"Add Class by Admin","Input valid data with minimum character allowed on Add Class Field","ERROR","2022-11-10T21:27:00.815+07:00[Asia/Bangkok]","0.0","77.69"

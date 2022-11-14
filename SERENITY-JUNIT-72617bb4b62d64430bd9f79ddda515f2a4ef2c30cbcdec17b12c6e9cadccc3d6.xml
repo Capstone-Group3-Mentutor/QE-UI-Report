@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Register New Member" skipped="0" tests="1" time="11.24" timestamp="2022-11-13 11:05:57"><testcase name="Verify register new member without special char on field password"/></testsuite>

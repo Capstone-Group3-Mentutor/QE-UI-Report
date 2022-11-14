@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentee Profile Page's Profile Picture","Verify User Profile picture location","SUCCESS","2022-11-13T15:10:56.291+07:00[Asia/Bangkok]","0.0","0.01"
+"Mentee Profile Page's Profile Picture","Verify User Profile picture not interactable","SUCCESS","2022-11-13T15:10:56.322+07:00[Asia/Bangkok]","0.0","0.02"
+"Mentee Profile Page's Profile Picture","Verify mentee profile detail location","SUCCESS","2022-11-13T15:10:56.357+07:00[Asia/Bangkok]","0.0","0.01"

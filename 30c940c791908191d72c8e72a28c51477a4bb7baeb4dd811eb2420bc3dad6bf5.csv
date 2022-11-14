@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify whether email field is case sensitive","SUCCESS","2022-11-11T02:23:39.192+07:00[Asia/Bangkok]","0.0","12.66"
+"User Login Functionality","Verify user login with copy pasted password","SUCCESS","2022-11-11T02:24:11.891+07:00[Asia/Bangkok]","0.0","10.33"
+"User Login Functionality","Verify user login with multiple tap on login button","SUCCESS","2022-11-13T22:29:09.411+07:00[Asia/Bangkok]","0.0","15.39"
+"User Login Functionality","Verify user login at the same times with different browser","FAILURE","2022-11-13T23:30:19.224+07:00[Asia/Bangkok]","0.0","16.6"
+"User Login Functionality","Verify accessing webapp after close without logout","FAILURE","2022-11-13T23:30:35.871+07:00[Asia/Bangkok]","0.0","15.38"

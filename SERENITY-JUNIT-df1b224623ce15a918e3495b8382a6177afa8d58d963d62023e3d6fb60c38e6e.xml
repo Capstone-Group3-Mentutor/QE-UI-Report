@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Choose Task File Button" skipped="0" tests="2" time="21.83" timestamp="2022-11-13 11:24:48"><testcase name="Verify submit valid file with Choose Task File Button"/><testcase name="Verify submit invalid file with Choose Task File Button"/></testsuite>

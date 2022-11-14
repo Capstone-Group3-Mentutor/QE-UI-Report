@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Serenity Reports</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+
+        $('.scenario-result-table').DataTable({
+
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 25,
+            "language": {
+                searchPlaceholder: "Filter",
+                search: ""
+            }
+        });
+
+        // Results table
+        $('#test-results-table').DataTable({
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 100,
+            "lengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]]
+        });
+
+    })
+    ;
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Mentutor Web-App Automation Testing using Serenity BDD</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+                > Tag 
+                > <span
+                    class="truncate-60">Admin-Home (passing Tests)</span>
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 14-11-2022 03:07:02</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <h2><i class='bi bi-tags'></i> Tag: Admin-Home (passing Tests)</h2>
+                <table class='overview'>
+                    <tr>
+                        <td width="375px" valign="top">
+                            <div class="test-count-summary">
+                                <div>
+
+                                30 tests
+                                    across 30 scenarios
+
+                                     |
+                                        <a href="3d1c80008db26ed61bb8562f8204fd2e4afb1934a4cbe8f013bcaa139a19912c.csv" title="Download CSV"> <i class="bi bi-cloud-arrow-down" title="Download CSV"></i></a>
+
+                                    <p class="report-info"><i class="bi bi-info-circle"></i> Note that results include
+                                        data-driven scenarios containing tests ,
+                                        which may also contain results other than tests .</p>
+
+
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#summary"><i class="bi bi-house-door"></i> Summary</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#tests"><i class="bi bi-speedometer"></i> Test
+                                            Results</a>
+                                    </li>
+                                </ul>
+
+                                <div class="card border">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div id="summary" class="tab-pane fade in active">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div>
+                                                            <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
+                                                            <div>
+                                                                <table class="table table-striped table-hover">
+                                                                    <tbody>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-card-checklist"></i> Number of Scenarios
+                                                                        </td>
+                                                                        <td>30</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-caret-right"></i> Number of Test Cases
+                                                                        </td>
+                                                                        <td>30</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-flag-fill"></i> Tests Started
+                                                                        </td>
+                                                                        <td>Nov 13, 2022 16:35:37</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stop-circle"></i> Tests Finished
+                                                                        </td>
+                                                                        <td>Nov 13, 2022 17:29:54</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch"></i> Total Duration
+                                                                        </td>
+                                                                        <td> 54m 16s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-trophy"></i> Fastest Test
+                                                                        </td>
+                                                                        <td>7ms</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-skip-start"></i> Slowest Test
+                                                                        </td>
+                                                                        <td>40s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch"></i> Average Execution Time
+                                                                        </td>
+                                                                        <td>11s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch-fill"></i> Total Execution Time
+                                                                        </td>
+                                                                        <td> 5m 34s</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                        <!-- Severity bar chart -->
+                                                        <div class="chart-container" style="position: relative; width:30vw">
+                                                            <canvas id="severityChart" width="300" height="300"></canvas>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                        <!-- Duration bar chart -->
+                                                        <div class="chart-container" style="position: relative; width:30vw">
+                                                            <canvas id="durationChart" width="300" height="300"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <!-- High level coverage bar chart -->
+                                                            <div class="chart-container" style="position: relative; width:60vw">
+                                                                <h3><i class="bi bi-reception-3"></i> Functional Coverage Overview</h3>
+                                                                <h4>Features</h4>
+                                                                <canvas id="coverageChart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h3>Tags</h3>
+
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div>
+                                                                                <a href="6b2b7b5b6f135bbbac154761319234491bd2bac6d1fd17b92edd04ebc4d8d85b.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Admin-Home&nbsp;&nbsp;&nbsp;30
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="9a26bd101adfda745f743db04eb3269922eb1ff4d86d9997efeca1ebfe995ac4.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Manual&nbsp;&nbsp;&nbsp;7
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="239034fb5e5e93fdf382e59f9cd545813366796e6215f9d77d2ee95bc54b2596.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Rerunbroken&nbsp;&nbsp;&nbsp;7
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="6b04e5dabadd045aa445e2ca7a98ae9da4e5c277e067cc5c5ceccae6427747eb.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Need-Fix&nbsp;&nbsp;&nbsp;1
+                                                                                    </span>
+                                                                                </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                            <h5 class="card-title">Manual</h5>
+                                                                        <div>
+                                                                                <a href="220d8ef6080eb8a7746b6ccaff3b44ac3c1f123a09790bb9a8ff31e7b07c9746.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Passed&nbsp;&nbsp;&nbsp;7
+                                                                                    </span>
+                                                                                </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                            <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <h3>Functional Coverage Details</h3>
+
+
+                                                                    <h4>Features</h4>
+
+                                                                    <table class="table feature-coverage-table" id="Feature">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Feature</th>
+                                                                            <th style="width:1em;">Test&nbsp;Cases</th>
+                                                                            <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">%&nbsp;Pass</th>
+                                                                            <th style="width:1em;">Result</th>
+                                                                            <th>Coverage</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html" > Admin home page > Admin Home Page Element Visibility and Locator</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html" > Admin home page > Admin Home Page List User</a>
+                                                                                    </td>
+                                                                                    <td>11</td>
+                                                                                    <td>11</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="11"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="bd31596548fc76890e23190226709f28684193dd81bcbac0903d040a2e3b86a2.html" > Admin home page > Admin Home Page Menu Navigation</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="03f172c33fe8089f977e1c67803528c1f1d8f504b647d3b5f85bcaa6e29316ce.html" > Admin home page > Admin Home Page Title</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html" > Admin home page > Modal of Edit Users by Admin</a>
+                                                                                    </td>
+                                                                                    <td>12</td>
+                                                                                    <td>12</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="12"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html" > Admin home page > Submit Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html" > Class management page > Submit Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                            <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="6b2b7b5b6f135bbbac154761319234491bd2bac6d1fd17b92edd04ebc4d8d85b.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Admin-Home&nbsp;&nbsp;&nbsp;30
+                                    </span>
+                                    </a>
+                                    <a href="9a26bd101adfda745f743db04eb3269922eb1ff4d86d9997efeca1ebfe995ac4.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Manual&nbsp;&nbsp;&nbsp;7
+                                    </span>
+                                    </a>
+                                    <a href="239034fb5e5e93fdf382e59f9cd545813366796e6215f9d77d2ee95bc54b2596.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Rerunbroken&nbsp;&nbsp;&nbsp;7
+                                    </span>
+                                    </a>
+                                    <a href="6b04e5dabadd045aa445e2ca7a98ae9da4e5c277e067cc5c5ceccae6427747eb.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Need-Fix&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                                <h5 class="card-title">Manual</h5>
+                            <div>
+                                    <a href="220d8ef6080eb8a7746b6ccaff3b44ac3c1f123a09790bb9a8ff31e7b07c9746.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Passed&nbsp;&nbsp;&nbsp;7
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                                            </div>
+                                        </div>
+                                        <div id="tests" class="tab-pane fade in">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Started</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="fd526e74c995a2fca0ddb1db3e0d5c6d1d56c926140ca76fc863388d5a75cea7.html">Verify List User visibility when there is list users</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>16:35:37</td>
+                                                    <td>9s 118ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="036d52016c483f7790e93046cb0f7c81221b95797ab1f025ba8c6df21391adef.html">Verify List User visibility when there is no list users</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:35:48</td>
+                                                    <td>6s 406ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="c341abd5c15260c3b0e0e071e012ea98ae4643109720fa81866a329387e62a2f.html">Verify List User Content visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>16:36:04</td>
+                                                    <td>5s 696ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="b252bff8208bc61ee79e27204a1f49107735a24f1ebebb981a46d3a75fe3ac35.html">Verify Kebab Button visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>16:36:11</td>
+                                                    <td>5s 274ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="20b65d3817ccea420a2fcbc31152b40c48a0e0355727d2f3f5c681575f25609e.html">Verify Kebab Button functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:36:17</td>
+                                                    <td>5s 677ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="71a7b334b14791f3c7118ba7ccfaa25264b8fbd1977151d698bf5b72fd01b89d.html">Verify Delete Button functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:36:24</td>
+                                                    <td>6s 695ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ae912194dd5f92158ad0fd6280b58d40fbed7f042a8c68b2fa94671b3a8529a8.html">Verify Cancel Delete User functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:36:32</td>
+                                                    <td>6s 330ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="dc074edb965e4bedea1f8395d0485ae1a26968e08ecd68aa06247d8b0d0abfa2.html">Verify Delete User functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:36:39</td>
+                                                    <td>6s 325ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="35c89df41efc5553d91a5b86e03d41d370eb95d2bb6644a8540f5167abc58fc6.html">Verify Edit User functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>16:36:47</td>
+                                                    <td>6s 115ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="5718b2ea1219e4e91761ecba8c73f893568299f0b8a1b07c8dbec23262b0b52f.html">Verify List User Title visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>17:20:06</td>
+                                                    <td>13s 627ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="be1daf730b13d510d487100a26e19f7d9afc7809da3cea0969b5b4beed112136.html">Verify Modal Edit Element visibility</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>16:37:04</td>
+                                                    <td>5s 617ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="df6aba3bddd340a5067b761818bb500795d99521e431e85788ebc249ef699dae.html">Input special character on Name field</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>16:37:26</td>
+                                                    <td>6s 397ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="a4423817dfc342626c86f6c884efa1e640b1c1372e9e2291eac0348f17bb877f.html">Input Invalid Email on Email field</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>16:37:33</td>
+                                                    <td>6s 472ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="557195fe1588bdda08b4e040002e1aa3ac3c5540d9e951b5072965b80d2a087d.html">Input valid Email on Email field</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>16:37:41</td>
+                                                    <td>6s 111ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d5be54adac96b356470ade7e635ce20c8a2071114f4b17bd9c635e929a6a3af6.html">Verify Dropdown Button functionality</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>16:37:48</td>
+                                                    <td>6s 297ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d88a5403d36e26ea1a3c504d6f1588cdee7f7a1f145f4fe3730ec006866ccc0b.html">Input alphabet on Name field</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>17:20:23</td>
+                                                    <td>9s 809ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="fd6b6c06da2d7077f719928767109d1172f06d8a5433206d22e7e0c36f242ec1.html">Input numeric on Name field</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>17:20:33</td>
+                                                    <td>9s 809ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2e968f4f43665fd9d828a60efca2c0a004635ffb6a0844d0cb58e68165219407.html">Verify Dropdown Content functionality</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>17:29:34</td>
+                                                    <td>20s 116ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ddb0335508802e1c28de48b134ab31ccc418cb7b2e62b30894c704924c348b10.html">Verify user input invalid data</a>
+                                                    </td>
+                                                    <td>9</td>
+                                                    <td>16:39:20</td>
+                                                    <td>29s 846ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8389e1ab7e654d24c100e30b6edafd310ce76b4d67dc87143557b9fea85c7f1c.html">Verify user input valid data</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>17:21:01</td>
+                                                    <td>19s 744ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="bd31596548fc76890e23190226709f28684193dd81bcbac0903d040a2e3b86a2.html">Admin Home Page Menu Navigation</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="976d645f30a5024f7d43460dcff963159148cbbf6b32cbca3702efa597f4c5f4.html">Verify Admin Home Page Menu Navigation and option visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>16:40:13</td>
+                                                    <td>40s 245ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="bd31596548fc76890e23190226709f28684193dd81bcbac0903d040a2e3b86a2.html">Admin Home Page Menu Navigation</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="0ea01897f40bf25fb1d0b34e1e1d7e11529e5ba603a03f3a156579c939aebb10.html">Verify Admin Home Page Menu Navigation and option functionality</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td>16:40:54</td>
+                                                    <td>34s 544ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="03f172c33fe8089f977e1c67803528c1f1d8f504b647d3b5f85bcaa6e29316ce.html">Admin Home Page Title</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="16e84d3003aec6c9a9da0f1841dc32807252780de003619fd77f785af8539d5a.html">Verify Page Title contains correct message</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>17:21:32</td>
+                                                    <td>6s 785ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                            <table class="scenario-result-table table" id="manual-scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column" style="width:60em;">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ae74f11bd3f112bc62edfd2ec99157b50ba8fe208b340ef5a13e61f8ac41ddf6.html">Verify Scroll bar visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d618ddb44cf803b6367ba7b76621aec158b5ab085e5324fe738d390814d1e885.html">Verify Name field is enable</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="bf71b59663bfd33a2297aebed9747b60e54a65b1e4690f9404acefcde8e80ead.html">Verify Email field is enable</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2a1f8267196461d6ea5843e29568ac672cef0be23362bb0090d3be985d668742.html">Verify Password field is enable</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="7dbe36d8d081e2e1d5b46b3788c2e4c9f5662392fe0aa49b3592e9c730b29b0f.html">Verify Class field is enable</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html">Admin Home Page Element Visibility and Locator</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ec3c9c8eb7ac1bacfc990bd4f7a0c39b44384d43c38e4c0e38c5c8b585eab0d5.html">Verify all element is visible using automated element locator</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="03f172c33fe8089f977e1c67803528c1f1d8f504b647d3b5f85bcaa6e29316ce.html">Admin Home Page Title</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="3afe107e0ea01f1ed85f0f3b352a2f7d5ee57bcdc3f17638f5f399b7faf49ff6.html">Verify Page Title location</a>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 3.3.4</span>
+        </div>
+    </div>
+</div>
+
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Scenarios', link: "a1c7147f103ad2ba924e9948846d776b5bf9b05c67fcbca0d32739146c1e467b.html" },
+            { title: 'Pending Scenarios', link: "2e6603b6b51d20d57fd21385c5772ff17c66a18a0fc32cc5fadb69f0cc654d08.html" },
+            { title: 'Ignored Scenarios', link: "0322684066202c5300351ddff6737a6bc9310d0004b846a4b786d428de844796.html" },
+            { title: 'Skipped Scenarios', link: "2aca14ec36b48ee605e73ee7da99965f08042f3eeaf9efc764f36f92581ed74f.html" },
+            { title: 'Aborted Scenarios',  link: "5f29cc6f3146b26845ed7cf544e2b70a429b6c4203c498b6659ab361a27770a4.html"},
+            { title: 'Failed Scenarios', link: "6af43a39a425fef1264cbb050945d88e2bc2dba411590fe5242f4b1c56da2325.html"  },
+            { title: 'Broken Scenarios', link: "77caaf880694adaeedecb623ceeeb110e243a640aa3f1c483fc0532fa0a85fb1.html"    },
+            { title: 'Compromised Scenarios',  link: "15f31967cbe69f86d3a21c57c20fbe2325d4f48168961f358b705728ae0ee7e8.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing Scenarios', 'Pending Scenarios', 'Ignored Scenarios', 'Skipped Scenarios', 'Aborted Scenarios', 'Failed Scenarios', 'Broken Scenarios', 'Compromised Scenarios','Undefined Scenarios'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [{meta: 'Passing tests', value: 30}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "a1c7147f103ad2ba924e9948846d776b5bf9b05c67fcbca0d32739146c1e467b.html" },
+            { title: 'Pending Scenarios', link: "2e6603b6b51d20d57fd21385c5772ff17c66a18a0fc32cc5fadb69f0cc654d08.html" },
+            { title: 'Ignored Scenarios', link: "0322684066202c5300351ddff6737a6bc9310d0004b846a4b786d428de844796.html" },
+            { title: 'Skipped Scenarios', link: "2aca14ec36b48ee605e73ee7da99965f08042f3eeaf9efc764f36f92581ed74f.html" },
+            { title: 'Aborted Scenarios',  link: "5f29cc6f3146b26845ed7cf544e2b70a429b6c4203c498b6659ab361a27770a4.html"},
+            { title: 'Failed Scenarios', link: "6af43a39a425fef1264cbb050945d88e2bc2dba411590fe5242f4b1c56da2325.html"  },
+            { title: 'Broken Scenarios', link: "77caaf880694adaeedecb623ceeeb110e243a640aa3f1c483fc0532fa0a85fb1.html"    },
+            { title: 'Compromised Scenarios',  link: "15f31967cbe69f86d3a21c57c20fbe2325d4f48168961f358b705728ae0ee7e8.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [23,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [7,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "67d3009c8cfe06a013e82849638c02c2d6676399883db82e0b53cf233c97471f.html"},
+                {title: "1 to 10 seconds", link: "e0ec86bf3ef4ef3d9e35f5ababd61feefda7d8154b513e4366db7b7e6a284952.html"},
+                {title: "10 to 30 seconds", link: "cb1fe2771ade197660afa54bf98c518d3e9dcafc2d48c04d19d2f45b9f5b3d77.html"},
+                {title: "30 to 60 seconds", link: "ed1b33ce9826aeaf815559eed8d35e81b6d678491d7711f61bedb95397c626a2.html"},
+                {title: "1 to 2 minutes", link: "93e231d00c9fda3e63cd43fcac41b56ccca014eea24246dcfd32e05bc91b8d42.html"},
+                {title: "2 to 5 minutes", link: "0e6bb2295a7fa29d0299ba5db420954b9e012bec7e417a960f508828805212f3.html"},
+                {title: "5 to 10 minutes", link: "cb2efd9cc8d7ca3cf849b5deb8dca091cda466ac836cd3dd08ec2a9e09584990.html"},
+                {title: "10 minutes or over", link: "7103d47e98462328544e3e12dad970817cac9951d81bd2e46bc5a7737bc0b0e0.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['1','17','10','2','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
+
+
+
+    <!-- COVERAGE BAR CHART -->
+    <script>
+
+        // The coverage bar chart
+        const coverageChartCtx = document.getElementById('coverageChart');
+
+        // Options define for display value on top of bars
+
+        const coverageReports = [
+            {
+                title: 'Admin Home Page Element Visibility and Locator',
+                result: 'SUCCESS',
+                link: "c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html"
+            },
+            {
+                title: 'Admin Home Page List User',
+                result: 'SUCCESS',
+                link: "2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html"
+            },
+            {
+                title: 'Admin Home Page Menu Navigation',
+                result: 'SUCCESS',
+                link: "bd31596548fc76890e23190226709f28684193dd81bcbac0903d040a2e3b86a2.html"
+            },
+            {
+                title: 'Admin Home Page Title',
+                result: 'SUCCESS',
+                link: "03f172c33fe8089f977e1c67803528c1f1d8f504b647d3b5f85bcaa6e29316ce.html"
+            },
+            {
+                title: 'Modal of Edit Users by Admin',
+                result: 'SUCCESS',
+                link: "fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html"
+            },
+            {
+                title: 'Submit Button Functionality',
+                result: 'SUCCESS',
+                link: "2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html"
+            },
+            {
+                title: 'Submit Button Functionality',
+                result: 'SUCCESS',
+                link: "2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html"
+            },
+        ]
+        const coverageData = {
+            labels: [
+                'Admin Home Page Element Visibility and Locator',
+                'Admin Home Page List User',
+                'Admin Home Page Menu Navigation',
+                'Admin Home Page Title',
+                'Modal of Edit Users by Admin',
+                'Submit Button Functionality',
+                'Submit Button Functionality',
+            ],
+            datasets: [
+                {
+                    label: ['Passing Tests'],
+                    data: [1,11,2,2,12,2,2],
+                    backgroundColor: [ 'rgba(153,204,51,0.5)' ]
+                },
+                {
+                    label: ['Pending Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(165, 199, 238, 0.5)' ]
+                },
+                {
+                    label: ['Ignored Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(168, 168, 168, 0.5)' ]
+                },
+                {
+                    label: ['Skipped Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(238, 224, 152, 0.75)' ]
+                },
+                {
+                    label: ['Aborted Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 153, 102, 0.5)' ]
+                },
+                {
+                    label: ['Failed Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 22, 49, 0.5)' ]
+                },
+                {
+                    label: ['Errors'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
+                },
+                {
+                    label: ['Compromised Tests'],
+                    data: [null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 104, 255, 0.5)' ]
+                },
+            ]
+        }
+        const coverageOptions = {
+            responsive: true,
+            indexAxis: 'y',
+            // barPercentage: ,
+            barThickness: 'flex',
+            maxBarThickness: 30,
+            minBarLength: 2,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold'
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                },
+            },
+        }
+
+        const coverageChart = new Chart(coverageChartCtx, {
+            type: 'bar',
+            data: coverageData,
+            options: coverageOptions
+        });
+
+        function coverageClickHandler(click) {
+            const points = coverageChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                if (coverageReports[firstPoint.index].link) {
+                    window.open(coverageReports[firstPoint.index].link, "_self")
+                }
+            }
+        }
+
+        coverageChartCtx.onclick = coverageClickHandler;
+    </script>
+    <!-- END COVERAGE CHART -->
+
+</body>
+</html>

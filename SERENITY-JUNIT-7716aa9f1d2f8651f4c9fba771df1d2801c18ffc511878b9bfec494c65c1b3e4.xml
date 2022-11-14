@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Register New Member" skipped="0" tests="2" time="166.16" timestamp="2022-11-12 02:08:10"><testcase name="Verify Role placeholder"/><testcase name="Verify pop up message when failed register new users"/></testsuite>

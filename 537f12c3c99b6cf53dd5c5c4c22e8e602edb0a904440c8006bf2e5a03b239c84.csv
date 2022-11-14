@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add Class by Admin","Verify class field is enable","SUCCESS","2022-11-13T17:38:15.061+07:00[Asia/Bangkok]","0.0","13.07"
+"Add Class by Admin","Input Alphabet on Add Class Field","SUCCESS","2022-11-13T17:38:29.462+07:00[Asia/Bangkok]","0.0","162.51"
+"Add Class by Admin","Input Numeric on Add Class Field","SUCCESS","2022-11-13T17:41:12.004+07:00[Asia/Bangkok]","0.0","56.9"
+"Add Class by Admin","Input Special Character on Add Class Field","SUCCESS","2022-11-13T19:38:19.955+07:00[Asia/Bangkok]","0.0","26.37"
+"Add Class by Admin","Input valid data with minimum character allowed on Add Class Field","SUCCESS","2022-11-13T19:38:46.371+07:00[Asia/Bangkok]","0.0","6.64"
+"Add Class by Admin","Input valid data with maximum character allowed on Add Class Field","SUCCESS","2022-11-13T19:38:54.215+07:00[Asia/Bangkok]","0.0","6.91"

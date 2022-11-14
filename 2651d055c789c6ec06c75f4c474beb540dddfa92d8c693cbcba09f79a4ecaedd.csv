@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Submit Button Functionality","Input ""<valid data>"" with minimum character allowed on edit class field and choose inactive class","ERROR","2022-11-10T21:33:18.614+07:00[Asia/Bangkok]","0.0","189.6"
+"Submit Button Functionality","Input ""<valid data>"" with minimum character allowed on edit class field and choose active class","ERROR","2022-11-10T21:36:28.219+07:00[Asia/Bangkok]","0.0","189.68"
+"Submit Button Functionality","Input ""<valid data>"" with minimum character allowed on edit class field and didn't choose status class","ERROR","2022-11-10T21:39:37.91+07:00[Asia/Bangkok]","0.0","189.65"
+"Submit Button Functionality","Input ""<valid data>"" with maximum character allowed on edit class field and choose inactive class","ERROR","2022-11-10T21:42:47.568+07:00[Asia/Bangkok]","0.0","170.27"
+"Submit Button Functionality","Input ""<valid data>"" with maximum character allowed on edit class field and choose active class","ERROR","2022-11-10T21:45:40.017+07:00[Asia/Bangkok]","0.0","129.91"

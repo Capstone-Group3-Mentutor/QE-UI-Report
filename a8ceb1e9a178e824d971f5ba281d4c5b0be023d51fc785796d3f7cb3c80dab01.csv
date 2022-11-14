@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Edit User’s Profile by Mentee","Verify all element is visible using automated element locator on Mentee Profile Page","SUCCESS","2022-11-13T22:08:41.269+07:00[Asia/Bangkok]","0.0","13.09"
+"Edit User’s Profile by Mentee's Page Title","Verify Page Title location on Edit User's Profile by Mentee","SUCCESS","2022-11-13T22:08:55.699+07:00[Asia/Bangkok]","0.0","0.07"
+"Edit User’s Profile by Mentee's Page Title","Verify Page Title has biggest font on Edit User's Profile by Mentee","SUCCESS","2022-11-13T22:08:55.88+07:00[Asia/Bangkok]","0.0","0.07"
+"Submit Button","Verify Submit button when edit with valid data","SUCCESS","2022-11-13T22:08:56.019+07:00[Asia/Bangkok]","0.0","10.84"
+"Edit User’s Profile by Mentee's Profile Picture","Verify User Profile picture location","SUCCESS","2022-11-13T22:09:45.025+07:00[Asia/Bangkok]","0.0","0.04"
+"Edit User’s Profile by Mentee's Profile Picture","Verify User Profile picture not interactable","SUCCESS","2022-11-13T22:09:45.084+07:00[Asia/Bangkok]","0.0","0.03"

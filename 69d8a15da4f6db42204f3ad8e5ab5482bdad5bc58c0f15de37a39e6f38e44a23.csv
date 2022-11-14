@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Admin Home Page List User","Verify List User Content visibility","SUCCESS","2022-11-12T17:55:21.901+07:00[Asia/Bangkok]","0.0","25.07"
+"Admin Home Page List User","Verify Kebab Button visibility","SUCCESS","2022-11-12T17:55:47.765+07:00[Asia/Bangkok]","0.0","12.0"
+"Admin Home Page List User","Verify Delete Button functionality","SUCCESS","2022-11-12T17:56:12.139+07:00[Asia/Bangkok]","0.0","11.94"
+"Admin Home Page List User","Verify Delete User functionality","ERROR","2022-11-12T17:57:08.012+07:00[Asia/Bangkok]","0.0","12.8"
+"Admin Home Page List User","Verify Edit User functionality","SUCCESS","2022-11-12T17:57:21.755+07:00[Asia/Bangkok]","0.0","19.83"

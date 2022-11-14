@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify user login when other login session is active","FAILURE","2022-11-13T15:50:36.894+07:00[Asia/Bangkok]","0.0","1.28"
+"User Login Functionality","Verify user login without email suffix","FAILURE","2022-11-13T22:29:08.077+07:00[Asia/Bangkok]","0.0","1.28"
+"Mentor Profile Page's Edit Button","Verify Edit Button location","SUCCESS","2022-11-14T02:04:48.719+07:00[Asia/Bangkok]","0.0","1.32"
+"Mentor Review Task Submitted by Mentee","Verify reviewing a task and gave valid score","SUCCESS","2022-11-13T23:13:13.386+07:00[Asia/Bangkok]","0.0","1.14"

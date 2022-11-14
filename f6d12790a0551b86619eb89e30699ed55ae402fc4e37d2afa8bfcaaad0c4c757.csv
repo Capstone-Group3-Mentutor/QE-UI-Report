@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify user login when other login session is active","FAILURE","2022-11-13T15:50:36.894+07:00[Asia/Bangkok]","0.0","1.28"
+"User Login Functionality","Verify accessing webapp after close and logout","SUCCESS","2022-11-13T15:50:38.242+07:00[Asia/Bangkok]","0.0","0.07"
+"User Login Functionality","Verify eye icon functionality","FAILURE","2022-11-13T15:50:38.38+07:00[Asia/Bangkok]","0.0","0.04"
+"User Login Functionality","Verify critical element visibility when windows resized","SUCCESS","2022-11-13T15:50:38.459+07:00[Asia/Bangkok]","0.0","0.04"

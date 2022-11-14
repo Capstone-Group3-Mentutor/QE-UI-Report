@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Edit Class Functionality","Input Alphabet on edit class field","SUCCESS","2022-11-13T21:40:22.858+07:00[Asia/Bangkok]","0.0","68.07"
+"Login Page Element and Interaction","Verify navigation trough field using TAB and SHIFT+TAB","SUCCESS","2022-11-10T21:56:05.258+07:00[Asia/Bangkok]","0.0","109.51"
+"Login Page Element and Interaction","Verify submit registration with ENTER","SUCCESS","2022-11-10T21:57:57.234+07:00[Asia/Bangkok]","0.0","60.5"
+"User's Name and Role","Verify User's name visibility","SUCCESS","2022-11-13T23:56:50.463+07:00[Asia/Bangkok]","0.0","60.72"
+"View All Task Button","Verify navigate to task page by typing directly to browser","SUCCESS","2022-11-10T23:06:13.668+07:00[Asia/Bangkok]","0.0","73.17"
+"Register New Member","Verify Role placeholder","SUCCESS","2022-11-12T02:08:10.51+07:00[Asia/Bangkok]","0.0","106.89"
+"Register New Member","Verify submit registration with ENTER","SUCCESS","2022-11-12T02:12:07.211+07:00[Asia/Bangkok]","0.0","72.65"

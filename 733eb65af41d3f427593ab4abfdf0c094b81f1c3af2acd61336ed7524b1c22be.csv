@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentee logout","Verify User Logout as Mentee functionality","ERROR","2022-11-10T22:38:38.399+07:00[Asia/Bangkok]","0.0","60.52"
+"Mentee logout","Verify Cancel Logout as Mentee functionality","ERROR","2022-11-10T22:39:39.598+07:00[Asia/Bangkok]","0.0","17.27"
+"Mentee logout","Verify Cancel Logout as Mentee with refreshing the browser","ERROR","2022-11-10T22:39:57.652+07:00[Asia/Bangkok]","0.0","7.73"

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="User Login Functionality" skipped="0" tests="2" time="0.06" timestamp="2022-11-13 03:09:13"><testcase name="Verify user login but network disconnected when request sent"/><testcase name="Verify accessing webapp trough browser typing directly"/></testsuite>

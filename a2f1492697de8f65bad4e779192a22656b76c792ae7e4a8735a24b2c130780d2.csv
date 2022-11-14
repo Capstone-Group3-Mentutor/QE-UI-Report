@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Modal of Edit Users by Admin","Input alphabet on Name field","FAILURE","2022-11-12T19:45:26.989+07:00[Asia/Bangkok]","0.0","5.75"
+"Modal of Edit Users by Admin","Input numeric on Name field","FAILURE","2022-11-12T19:45:33.815+07:00[Asia/Bangkok]","0.0","6.55"

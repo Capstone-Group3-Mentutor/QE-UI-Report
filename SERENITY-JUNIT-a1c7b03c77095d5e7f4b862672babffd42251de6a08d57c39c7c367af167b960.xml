@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Mentee create a post" skipped="0" tests="2" time="17.93" timestamp="2022-11-13 11:36:26"><testcase name="Verify create new post with file"/><testcase name="Verify create new post without file"/></testsuite>

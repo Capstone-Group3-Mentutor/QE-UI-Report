@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentee create a post","Verify create new post with file","SUCCESS","2022-11-13T23:36:26.732+07:00[Asia/Bangkok]","0.0","9.88"
+"Mentee create a post","Verify create new post without file","SUCCESS","2022-11-13T23:36:41.734+07:00[Asia/Bangkok]","0.0","8.05"

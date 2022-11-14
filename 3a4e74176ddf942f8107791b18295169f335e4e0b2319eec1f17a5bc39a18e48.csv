@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Edit Class Functionality","Verify edit class field is enable","SUCCESS","2022-11-13T20:13:35.558+07:00[Asia/Bangkok]","0.0","6.11"
+"Edit Class Functionality","Verify status class field is enable","SUCCESS","2022-11-13T20:13:42.661+07:00[Asia/Bangkok]","0.0","9.78"
+"Edit Class Functionality","Verify update class status to non_active","SUCCESS","2022-11-13T21:38:20.991+07:00[Asia/Bangkok]","0.0","12.28"
+"Edit Class Functionality","Verify update class status to active","SUCCESS","2022-11-13T21:38:34.58+07:00[Asia/Bangkok]","0.0","12.68"
+"Edit Class Functionality","Input Special Character on edit class field","SUCCESS","2022-11-13T21:39:46.942+07:00[Asia/Bangkok]","0.0","34.83"
+"Edit Class Functionality","Input Alphabet on edit class field","SUCCESS","2022-11-13T21:40:22.858+07:00[Asia/Bangkok]","0.0","68.07"
+"Edit Class Functionality","Verify X button is enable","SUCCESS","2022-11-13T21:59:57.79+07:00[Asia/Bangkok]","0.0","10.72"

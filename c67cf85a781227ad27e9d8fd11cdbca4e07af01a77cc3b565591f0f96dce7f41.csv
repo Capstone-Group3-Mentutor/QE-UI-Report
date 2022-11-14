@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add Class by Admin","Input Alphabet on Add Class Field","SUCCESS","2022-11-12T20:39:33.394+07:00[Asia/Bangkok]","0.0","16.87"
+"Add Class by Admin","Input Numeric on Add Class Field","SUCCESS","2022-11-12T20:39:50.284+07:00[Asia/Bangkok]","0.0","17.18"
+"Add Class by Admin","Input Special Character on Add Class Field","SUCCESS","2022-11-12T20:45:30.887+07:00[Asia/Bangkok]","0.0","20.91"

@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentee Home Page Task Bar","Verify Task Bar visibility when there is mentee due task","ERROR","2022-11-10T22:44:32.497+07:00[Asia/Bangkok]","0.0","189.59"
+"Mentee Home Page Task Bar","Verify Task Bar Title visibility","ERROR","2022-11-10T22:49:05.163+07:00[Asia/Bangkok]","0.0","189.64"
+"Mentee Home Page Task Bar","Verify Task file redirect functionality","ERROR","2022-11-10T22:53:23.807+07:00[Asia/Bangkok]","0.0","6.26"

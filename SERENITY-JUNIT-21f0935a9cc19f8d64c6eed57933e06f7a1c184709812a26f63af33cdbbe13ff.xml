@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="6" failures="0" name="Edit Class Functionality" skipped="0" tests="8" time="178.11" timestamp="2022-11-13 08:13:35"><testcase name="Verify edit class field is enable"/><testcase name="Verify status class field is enable"/><testcase name="Verify update class status to non_active"><error message="Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text &quot;non_active&quot;. Current text: &quot;null&quot; (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text "non_active". Current text: "null" (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text "non_active". Current text: "null" (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.classStatusOfKelasTestingIsNon_active(ClassManStepDefs.java:66)&#13;
+✽.Class Status of Kelas Testing is non_active(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:26)&#13;
+</system-err></testcase><testcase name="Verify update class status to active"><error message="Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text &quot;active&quot;. Current text: &quot;null&quot; (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text "active". Current text: "null" (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for element found by By.cssSelector: div.flex:nth-child(9) &gt; p:nth-child(4) to have text "active". Current text: "null" (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.classStatusOfKelasTestingIsNon_active(ClassManStepDefs.java:66)&#13;
+✽.Class Status of Kelas Testing is active(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:34)&#13;
+</system-err></testcase><testcase name="Verify X button is enable"><error message="Expected condition failed: waiting for visibility of element located by By.cssSelector: .md\:space-y-2 &gt; h1:nth-child(1) (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for visibility of element located by By.cssSelector: .md\:space-y-2 &gt; h1:nth-child(1) (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for visibility of element located by By.cssSelector: .md\:space-y-2 &gt; h1:nth-child(1) (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.adminGoBackToAddClassPage(ClassManStepDefs.java:84)&#13;
+✽.Admin go back to add class page(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:40)&#13;
+</system-err></testcase><testcase name="Input Numeric on edit class field"><error message="Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.adminAlreadyClickKebabButtonOnKelasEdit(ClassManStepDefs.java:89)&#13;
+✽.Admin already click kebab button on Kelas Edit(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:44)&#13;
+</system-err></testcase><testcase name="Input Special Character on edit class field"><error message="Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.adminAlreadyClickKebabButtonOnKelasEdit(ClassManStepDefs.java:89)&#13;
+✽.Admin already click kebab button on Kelas Edit(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:50)&#13;
+</system-err></testcase><testcase name="Input Alphabet on edit class field"><error message="Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.TimeoutException">Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Expected condition failed: waiting for visibility of element located by By.cssSelector: .flex:nth-child(14) path (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: net.thucydides.core.webdriver.DevToolsWebDriverFacade
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.adminAlreadyClickKebabButtonOnKelasEdit(ClassManStepDefs.java:89)&#13;
+✽.Admin already click kebab button on Kelas Edit(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:56)&#13;
+</system-err></testcase></testsuite>

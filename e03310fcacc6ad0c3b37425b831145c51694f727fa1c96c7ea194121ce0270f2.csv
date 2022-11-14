@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login Page Visual Testing","Verify all error messages should be displayed in same CSS style","FAILURE","2022-11-13T15:09:12.901+07:00[Asia/Bangkok]","0.0","0.02"
+"Login Page Visual Testing","Verify password is masked when eye icon is not clicked","FAILURE","2022-11-13T15:09:13.116+07:00[Asia/Bangkok]","0.0","0.04"
+"Login Page Visual Testing","Verify password is masked when eye icon is clicked","FAILURE","2022-11-13T15:09:13.169+07:00[Asia/Bangkok]","0.0","0.04"
+"Login Page Visual Testing","Verify application crash handling method and should be redirected to error page","FAILURE","2022-11-13T15:09:13.236+07:00[Asia/Bangkok]","0.0","0.03"

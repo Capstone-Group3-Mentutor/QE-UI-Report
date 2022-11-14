@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="1" name="Edit Class Functionality" skipped="0" tests="2" time="19.12" timestamp="2022-11-13 09:59:57"><testcase name="Verify X button is enable"/><testcase name="Input Numeric on edit class field"><failure message="expected: &lt;123345&gt; but was: &lt;Valid Classname Edited&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;123345&gt; but was: &lt;Valid Classname Edited&gt;</failure><system-err>expected: &lt;123345&gt; but was: &lt;Valid Classname Edited&gt;&#13;
+mentutor.StepDefs.ClassManagementPage.ClassManStepDefs.validClassnameClassIsCreated(ClassManStepDefs.java:110)&#13;
+✽.123345 Class is created(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/editClassFunctionality.feature:46)&#13;
+</system-err></testcase></testsuite>

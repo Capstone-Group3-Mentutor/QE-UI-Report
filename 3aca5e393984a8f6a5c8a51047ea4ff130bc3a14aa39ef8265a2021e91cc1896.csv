@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Choose Task File Button","Verify submit valid file with Choose Task File Button","SUCCESS","2022-11-13T23:24:48.534+07:00[Asia/Bangkok]","0.0","11.53"
+"Choose Task File Button","Verify submit invalid file with Choose Task File Button","SUCCESS","2022-11-13T23:25:00.116+07:00[Asia/Bangkok]","0.0","10.3"
+"Task Submission Page Title","Verify Page Title location on Tasks Submission Modal","SUCCESS","2022-11-13T15:11:58.811+07:00[Asia/Bangkok]","0.0","0.02"
+"Task Submission Page Title","Verify Page Title has biggest font on Tasks Submission Modal","SUCCESS","2022-11-13T15:11:58.848+07:00[Asia/Bangkok]","0.0","0.02"

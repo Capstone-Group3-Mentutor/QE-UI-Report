@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="1" name="Add Class by Admin" skipped="0" tests="1" time="8.05" timestamp="2022-11-12 08:44:24"><testcase name="Input valid data with minimum character allowed on Add Class Field"><failure message="expected: &lt;&gt; but was: &lt;xxxx&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;&gt; but was: &lt;xxxx&gt;</failure><system-err>expected: &lt;&gt; but was: &lt;xxxx&gt;&#13;
+mentutor.StepDefs.ClassManagementPage.AddClassStepDefs.dataShouldBeRejected(AddClassStepDefs.java:78)&#13;
+✽.Data should be rejected(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/ClassManagementPage/addClassByAdmin.feature:49)&#13;
+</system-err></testcase></testsuite>

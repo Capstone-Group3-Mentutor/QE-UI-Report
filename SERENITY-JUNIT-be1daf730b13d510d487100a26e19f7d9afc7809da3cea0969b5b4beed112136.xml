@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="1" failures="2" name="Modal of Edit Users by Admin" skipped="0" tests="12" time="92.39" timestamp="2022-11-13 04:37:04"><testcase name="Verify Modal Edit Element visibility"/><testcase name="Input alphabet on Name field"><failure message="expected: &lt;Valid Name&gt; but was: &lt;&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;Valid Name&gt; but was: &lt;&gt;</failure><system-err>expected: &lt;Valid Name&gt; but was: &lt;&gt;&#13;
+mentutor.StepDefs.AdminHome.AdminHomeStepDef.alphabetShouldBeInputted(AdminHomeStepDef.java:57)&#13;
+✽.Valid Name should be inputted(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/adminHomePage/adminModalEditUser.feature:17)&#13;
+</system-err></testcase><testcase name="Input numeric on Name field"><failure message="expected: &lt;Numeric&gt; but was: &lt;&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;Numeric&gt; but was: &lt;&gt;</failure><system-err>expected: &lt;Numeric&gt; but was: &lt;&gt;&#13;
+mentutor.StepDefs.AdminHome.AdminHomeStepDef.alphabetShouldBeInputted(AdminHomeStepDef.java:57)&#13;
+✽.Numeric should be inputted(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/adminHomePage/adminModalEditUser.feature:23)&#13;
+</system-err></testcase><testcase name="Input special character on Name field"/><testcase name="Input Invalid Email on Email field"/><testcase name="Input valid Email on Email field"/><testcase name="Verify Dropdown Button functionality"/><testcase name="Verify Dropdown Content functionality"><error message="Cannot locate option with text: Front end&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element&#10;Build info: version: '4.4.0', revision: 'e5c75ed026a'&#10;System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Cannot locate option with text: Front end
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown</error><system-err>Cannot locate option with text: Front end
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'MSI', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_341'
+Driver info: driver.version: unknown&#13;
+mentutor.Interactions.UserInteractions.selectTextFromDropdown(UserInteractions.java:105)&#13;
+mentutor.StepDefs.AdminHome.AdminHomeStepDef.userSelectClass(AdminHomeStepDef.java:87)&#13;
+✽.User select class Front end(file:///C:/Users/isyah/Desktop/CAPSTONE/Testing/QE-UI/src/test/resources/features/adminHomePage/adminModalEditUser.feature:48)&#13;
+</system-err></testcase><testcase name="Verify Name field is enable"/><testcase name="Verify Email field is enable"/><testcase name="Verify Password field is enable"/><testcase name="Verify Class field is enable"/></testsuite>

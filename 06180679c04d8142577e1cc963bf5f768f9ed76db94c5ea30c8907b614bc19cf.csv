@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Delete Button Functionality","Verify pop up window shown before deleting","ERROR","2022-11-13T17:43:02.072+07:00[Asia/Bangkok]","0.0","16.74"
+"Delete Button Functionality","Verify Cancel Delete class","ERROR","2022-11-13T17:43:20.143+07:00[Asia/Bangkok]","0.0","15.37"
+"Delete Button Functionality","Verify deleting a class","ERROR","2022-11-13T17:43:36.891+07:00[Asia/Bangkok]","0.0","14.17"

@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Admin logout","Verify User Logout as Admin functionality","SUCCESS","2022-11-11T00:29:55.122+07:00[Asia/Bangkok]","0.0","8.58"
+"Admin logout","Verify Cancel Logout as Admin functionality","SUCCESS","2022-11-11T00:30:04.795+07:00[Asia/Bangkok]","0.0","7.69"
+"Admin logout","Verify Cancel Logout as Admin with refreshing the browser","SUCCESS","2022-11-11T00:30:13.477+07:00[Asia/Bangkok]","0.0","7.5"

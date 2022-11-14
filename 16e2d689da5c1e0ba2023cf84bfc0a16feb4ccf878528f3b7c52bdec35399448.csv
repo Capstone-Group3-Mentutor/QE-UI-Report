@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"X Button Functionality","Input invalid data on edit class field","SUCCESS","2022-11-13T21:45:14.868+07:00[Asia/Bangkok]","0.0","12.18"
+"X Button Functionality","Input invalid data and choose active class","SUCCESS","2022-11-13T21:46:10.734+07:00[Asia/Bangkok]","0.0","26.0"
+"X Button Functionality","Input invalid data and choose inactive class","SUCCESS","2022-11-13T21:46:37.742+07:00[Asia/Bangkok]","0.0","18.84"

@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Submit Button Functionality","Input invalid data on edit class field and choose inactive class","FAILURE","2022-11-13T21:29:30.501+07:00[Asia/Bangkok]","0.0","10.4"
+"Submit Button Functionality","Input invalid data on edit class field and didn't choose status class","FAILURE","2022-11-13T21:29:53.892+07:00[Asia/Bangkok]","0.0","10.07"
+"Submit Button Functionality","Input empty data on edit class field and choose inactive class","FAILURE","2022-11-13T21:30:05.7+07:00[Asia/Bangkok]","0.0","10.23"
+"Submit Button Functionality","Input ""<valid data>"" with minimum character allowed on edit class field and choose inactive class","SUCCESS","2022-11-13T21:55:45.733+07:00[Asia/Bangkok]","0.0","15.7"
+"Submit Button Functionality","Verify user input invalid data","SUCCESS","2022-11-13T16:39:20.886+07:00[Asia/Bangkok]","0.0","29.85"
+"Submit Button Functionality","Verify user input valid data","SUCCESS","2022-11-13T17:21:01.654+07:00[Asia/Bangkok]","0.0","19.74"

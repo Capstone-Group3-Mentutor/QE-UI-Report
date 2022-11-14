@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Serenity Reports</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+
+        $('.scenario-result-table').DataTable({
+
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 25,
+            "language": {
+                searchPlaceholder: "Filter",
+                search: ""
+            }
+        });
+
+        // Results table
+        $('#test-results-table').DataTable({
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 100,
+            "lengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]]
+        });
+
+    })
+    ;
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Mentutor Web-App Automation Testing using Serenity BDD</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+                > Tag 
+                > <span
+                    class="truncate-60">Rerunbroken &gt; Duration 10 To 30 Seconds</span>
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 14-11-2022 03:07:08</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <h2><i class='bi bi-tags'></i> Tag: Rerunbroken > Duration 10 To 30 Seconds</h2>
+                <table class='overview'>
+                    <tr>
+                        <td width="375px" valign="top">
+                            <div class="test-count-summary">
+                                <div>
+
+                                47 tests
+                                    across 47 scenarios
+
+                                     |
+                                        <a href="b74e69a9df3cef3502ad6778a84e01b19c9432634f6cc374c0cde97a9e58b2bd.csv" title="Download CSV"> <i class="bi bi-cloud-arrow-down" title="Download CSV"></i></a>
+
+                                    <p class="report-info"><i class="bi bi-info-circle"></i> Note that results include
+                                        data-driven scenarios containing tests ,
+                                        which may also contain results other than tests .</p>
+
+
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#summary"><i class="bi bi-house-door"></i> Summary</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#tests"><i class="bi bi-speedometer"></i> Test
+                                            Results</a>
+                                    </li>
+                                </ul>
+
+                                <div class="card border">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div id="summary" class="tab-pane fade in active">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div>
+                                                            <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
+                                                            <div>
+                                                                <table class="table table-striped table-hover">
+                                                                    <tbody>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-card-checklist"></i> Number of Scenarios
+                                                                        </td>
+                                                                        <td>47</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-caret-right"></i> Number of Test Cases
+                                                                        </td>
+                                                                        <td>47</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-flag-fill"></i> Tests Started
+                                                                        </td>
+                                                                        <td>Nov 13, 2022 17:20:06</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stop-circle"></i> Tests Finished
+                                                                        </td>
+                                                                        <td>Nov 14, 2022 01:35:18</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch"></i> Total Duration
+                                                                        </td>
+                                                                        <td> 8h  15m 11s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-trophy"></i> Fastest Test
+                                                                        </td>
+                                                                        <td>10s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-skip-start"></i> Slowest Test
+                                                                        </td>
+                                                                        <td>25s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch"></i> Average Execution Time
+                                                                        </td>
+                                                                        <td>12s</td>
+                                                                    </tr>
+                                                                    <tr scope="row">
+                                                                        <td>
+                                                                            <i class="bi bi-stopwatch-fill"></i> Total Execution Time
+                                                                        </td>
+                                                                        <td> 9m 38s</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                        <!-- Severity bar chart -->
+                                                        <div class="chart-container" style="position: relative; width:30vw">
+                                                            <canvas id="severityChart" width="300" height="300"></canvas>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                        <!-- Duration bar chart -->
+                                                        <div class="chart-container" style="position: relative; width:30vw">
+                                                            <canvas id="durationChart" width="300" height="300"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <!-- High level coverage bar chart -->
+                                                            <div class="chart-container" style="position: relative; width:60vw">
+                                                                <h3><i class="bi bi-reception-3"></i> Functional Coverage Overview</h3>
+                                                                <h4>Features</h4>
+                                                                <canvas id="coverageChart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h3>Tags</h3>
+
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div>
+                                                                                <a href="239034fb5e5e93fdf382e59f9cd545813366796e6215f9d77d2ee95bc54b2596.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Rerunbroken&nbsp;&nbsp;&nbsp;47
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="c7eadaf37713aa0e37da2cdd24047c3b9df0d8259ea81d7d09cb22275cd4e0eb.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Class-Management&nbsp;&nbsp;&nbsp;12
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="9a26bd101adfda745f743db04eb3269922eb1ff4d86d9997efeca1ebfe995ac4.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Manual&nbsp;&nbsp;&nbsp;25
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="6b2b7b5b6f135bbbac154761319234491bd2bac6d1fd17b92edd04ebc4d8d85b.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Admin-Home&nbsp;&nbsp;&nbsp;4
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="0e0ce58ac5dcf9bfe5b6f0916e3d8c31623d7c33a0c06be63b9f1a3db41f7739.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Login-Functionality&nbsp;&nbsp;&nbsp;3
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="c265afa004baa1462b45ad566045fae62dcc0a3c9f7f6eeecdaeb7dc472fd27e.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Mentee Home&nbsp;&nbsp;&nbsp;4
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="f9e72c5657767636f836f23c10c81950db0bae8aa1c7c56a3b85fdd87ebbf432.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Mentee-Task&nbsp;&nbsp;&nbsp;17
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="605e97b59b3f87519aa36a1069b64129f6d0f2d2a649f3dc7bbc7f3a5788ce42.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Rerubroken&nbsp;&nbsp;&nbsp;8
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="0d1e5769b5843a894bf89e966f178d315ad587bc68071d44a8060eba147cf905.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Try Automated&nbsp;&nbsp;&nbsp;3
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="9c2f8b4989eb28167bca013e3361c5730e14c8095ea1308f637335863e76c2e2.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Mentor-Forum&nbsp;&nbsp;&nbsp;1
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="b5a51fc64ff8ca83de06a356b9bd0e5c8cbde54af2b1e8e384a9228fd9a93a6f.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Register&nbsp;&nbsp;&nbsp;6
+                                                                                    </span>
+                                                                                </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                            <h5 class="card-title">Manual</h5>
+                                                                        <div>
+                                                                                <a href="220d8ef6080eb8a7746b6ccaff3b44ac3c1f123a09790bb9a8ff31e7b07c9746.html">
+                                                                                    <span class="badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Passed&nbsp;&nbsp;&nbsp;20
+                                                                                    </span>
+                                                                                </a>
+                                                                                <a href="0923b7190349c5aa1076646a6b403753291c93b29933eba9c5f2656dab5ba9b7.html">
+                                                                                    <span class="badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                                                                        <i class="bi bi-tag"></i> Failed&nbsp;&nbsp;&nbsp;5
+                                                                                    </span>
+                                                                                </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                            <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <h3>Functional Coverage Details</h3>
+
+
+                                                                    <h4>Features</h4>
+
+                                                                    <table class="table feature-coverage-table-with-pagination" id="Feature">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Feature</th>
+                                                                            <th style="width:1em;">Test&nbsp;Cases</th>
+                                                                            <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">%&nbsp;Pass</th>
+                                                                            <th style="width:1em;">Result</th>
+                                                                            <th>Coverage</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html" > Admin home page > Admin Home Page Element Visibility and Locator</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html" > Admin home page > Admin Home Page List User</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html" > Admin home page > Modal of Edit Users by Admin</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html" > Admin home page > Submit Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="ff18685df1284daccd8c7adeed45722b8ca4b11fca1237ecdbf7a1aabae8805b.html" > Class management page > Delete Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="a51e3a59172e96202ccf67a79f78b354ab493679c83b3afa3d30cc17dd3bc21f.html" > Class management page > Edit Class Functionality</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>3</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html" > Class management page > Submit Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>5</td>
+                                                                                    <td>5</td>
+                                                                                    <td>40%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 40%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="40% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 60%; background-color: #fd938e"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="60% failure"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="216368dc6316935f13c2c4cbb6d304dd03771e12218ba3a51c83a1c5fc929559.html" > Class management page > X Button Functionality</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>3</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html" > Login > User Login Functionality</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>3</td>
+                                                                                    <td>33%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 33.333333%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="33% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 66.666667%; background-color: #fd938e"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="67% failure"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="bb72d87a6bf51a210d3cb81a0c1a8dbd04369df01c74cc85cd9a0c16e6fcf039.html" > Mentee forum > View More Comments and Hide Comments</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="e2b29f71a74f32eda878eb4a61d3e08f1c07cee12743737e2bcc8eb4f8eb2e62.html" > Mentee home page > Mentee Home Page Menu Navigation</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="1031cec9879f665b56df1e4e43317f8eba72abf1578b93148790a1ad89113e04.html" > Mentee home page > User's Name and Role</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html" > Mentee task page > Mentee Task Page Task Bar</a>
+                                                                                    </td>
+                                                                                    <td>16</td>
+                                                                                    <td>16</td>
+                                                                                    <td>94%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 93.75%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="15"
+                                                                                                     title="94% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 6.25%; background-color: #fd938e"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="6% failure"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="99c8016b7dd7282b1cfc207b1c0271033da64a06e9c5ebff81cebf2b207176a5.html" > Mentee task page > Mentee Task Page Title</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="7d12ffac23569729f4596debfaa29f3df257eed4a537f03a7a08adbf2351afc8.html" > Mentor forum > View More Comments and Hide Comments</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html" > Register user > Register New Member</a>
+                                                                                    </td>
+                                                                                    <td>6</td>
+                                                                                    <td>6</td>
+                                                                                    <td>33%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 33.333333%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="33% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 66.666667%; background-color: #fd938e"
+                                                                                                     aria-valuenow="4"
+                                                                                                     title="67% failure"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h3>Test Failure Overview</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h4>Most Frequent Failures</h4>
+                                                            <table class="table" style="width:40vw;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="4700173f71ac97a0f1d5b751da298ef12393b99bf9643a6e6aad73d7997ea7bb.html"><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> Assertion failed error</a>
+                                                                        </td>
+                                                                        <td><span
+                                                                                    class="badge failure-badge">5</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <h4>Most Unstable Features</h4>
+                                                            <table class="table" style="width:40vw;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge failure-badge">66%</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html">User Login Functionality</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge failure-badge">66%</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html">Submit Button Functionality</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge failure-badge">60%</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="failure-color top-list-title">
+                                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge failure-badge">6%</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="239034fb5e5e93fdf382e59f9cd545813366796e6215f9d77d2ee95bc54b2596.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Rerunbroken&nbsp;&nbsp;&nbsp;47
+                                    </span>
+                                    </a>
+                                    <a href="c7eadaf37713aa0e37da2cdd24047c3b9df0d8259ea81d7d09cb22275cd4e0eb.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Class-Management&nbsp;&nbsp;&nbsp;12
+                                    </span>
+                                    </a>
+                                    <a href="9a26bd101adfda745f743db04eb3269922eb1ff4d86d9997efeca1ebfe995ac4.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Manual&nbsp;&nbsp;&nbsp;25
+                                    </span>
+                                    </a>
+                                    <a href="6b2b7b5b6f135bbbac154761319234491bd2bac6d1fd17b92edd04ebc4d8d85b.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Admin-Home&nbsp;&nbsp;&nbsp;4
+                                    </span>
+                                    </a>
+                                    <a href="0e0ce58ac5dcf9bfe5b6f0916e3d8c31623d7c33a0c06be63b9f1a3db41f7739.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Login-Functionality&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="c265afa004baa1462b45ad566045fae62dcc0a3c9f7f6eeecdaeb7dc472fd27e.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Mentee Home&nbsp;&nbsp;&nbsp;4
+                                    </span>
+                                    </a>
+                                    <a href="f9e72c5657767636f836f23c10c81950db0bae8aa1c7c56a3b85fdd87ebbf432.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Mentee-Task&nbsp;&nbsp;&nbsp;17
+                                    </span>
+                                    </a>
+                                    <a href="605e97b59b3f87519aa36a1069b64129f6d0f2d2a649f3dc7bbc7f3a5788ce42.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Rerubroken&nbsp;&nbsp;&nbsp;8
+                                    </span>
+                                    </a>
+                                    <a href="0d1e5769b5843a894bf89e966f178d315ad587bc68071d44a8060eba147cf905.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Try Automated&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="9c2f8b4989eb28167bca013e3361c5730e14c8095ea1308f637335863e76c2e2.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Mentor-Forum&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="b5a51fc64ff8ca83de06a356b9bd0e5c8cbde54af2b1e8e384a9228fd9a93a6f.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Register&nbsp;&nbsp;&nbsp;6
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                                <h5 class="card-title">Manual</h5>
+                            <div>
+                                    <a href="220d8ef6080eb8a7746b6ccaff3b44ac3c1f123a09790bb9a8ff31e7b07c9746.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Passed&nbsp;&nbsp;&nbsp;20
+                                    </span>
+                                    </a>
+                                    <a href="0923b7190349c5aa1076646a6b403753291c93b29933eba9c5f2656dab5ba9b7.html">
+                                    <span class="tag-badge badge" style="background-color:#fd938e; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Failed&nbsp;&nbsp;&nbsp;5
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                                            </div>
+                                        </div>
+                                        <div id="tests" class="tab-pane fade in">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Started</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="ff18685df1284daccd8c7adeed45722b8ca4b11fca1237ecdbf7a1aabae8805b.html">Delete Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="e8378582ef7dd10add8701c51448d88b503c9d13b765a87836561eee6abb86fa.html">Verify Cancel Delete class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>20:13:13</td>
+                                                    <td>10s 906ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="a51e3a59172e96202ccf67a79f78b354ab493679c83b3afa3d30cc17dd3bc21f.html">Edit Class Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="deed803d14a5437f4edb1d9e5d71fb21ed35e3feee757ef40ef2c87d4b689e54.html">Verify update class status to non_active</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:38:20</td>
+                                                    <td>12s 275ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="a51e3a59172e96202ccf67a79f78b354ab493679c83b3afa3d30cc17dd3bc21f.html">Edit Class Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="24965ecae2d498bb9e240bac6e2c9d05ade2b95c44d499b4ada6e989b9485a5a.html">Verify update class status to active</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:38:34</td>
+                                                    <td>12s 680ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="a51e3a59172e96202ccf67a79f78b354ab493679c83b3afa3d30cc17dd3bc21f.html">Edit Class Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="43a0cecd54020124793b0f2d98c2e14c298baf28226b8799a44ea32008b6e2a8.html">Verify X button is enable</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>21:59:57</td>
+                                                    <td>10s 724ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result FAILURE">
+                                                    <td>
+                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8562e3f23af60eb8abd20d3144dc860fdbd86b05c5e3e82872362c9ed3476152.html">Input invalid data on edit class field and choose inactive class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:29:30</td>
+                                                    <td>10s 403ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr class="scenario-result FAILURE">
+                                                    <td>
+                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="9248529ede96fa1adcd6e2b0d9b979a7bf2e69d42757892588644ba3c82d87b2.html">Input invalid data on edit class field and didn't choose status class</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td>21:29:53</td>
+                                                    <td>10s 065ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr class="scenario-result FAILURE">
+                                                    <td>
+                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="b330dee5639668087bb761b6835677252d82150a17294b761d2f13513f4ff961.html">Input empty data on edit class field and choose inactive class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:30:05</td>
+                                                    <td>10s 234ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="cdccc64bf839e84ab29795d2478213e349ea0aedfd8951fa19e3ab510bdf9cd0.html">Input "<valid data>" with minimum character allowed on edit class field and choose inactive class</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td>21:55:45</td>
+                                                    <td>15s 697ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="216368dc6316935f13c2c4cbb6d304dd03771e12218ba3a51c83a1c5fc929559.html">X Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="18790e8855341c2fe4ac3b40259b9d72573707cc6d90ce349303d16ae57fbbbf.html">Input invalid data on edit class field</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td>21:45:14</td>
+                                                    <td>12s 181ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="216368dc6316935f13c2c4cbb6d304dd03771e12218ba3a51c83a1c5fc929559.html">X Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="96d105f501e68c378cc483074d8c73494ecb77f00ed9cf686ffab287107b6a32.html">Input invalid data and choose active class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:46:10</td>
+                                                    <td>25s 998ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="216368dc6316935f13c2c4cbb6d304dd03771e12218ba3a51c83a1c5fc929559.html">X Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="1ac7bd3d2474222e5bed42b69c547e0bdeedfcc516454ace1c479cc66061ce02.html">Input invalid data and choose inactive class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>21:46:37</td>
+                                                    <td>18s 841ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html">Admin Home Page List User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="5718b2ea1219e4e91761ecba8c73f893568299f0b8a1b07c8dbec23262b0b52f.html">Verify List User Title visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>17:20:06</td>
+                                                    <td>13s 627ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html">Modal of Edit Users by Admin</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2e968f4f43665fd9d828a60efca2c0a004635ffb6a0844d0cb58e68165219407.html">Verify Dropdown Content functionality</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>17:29:34</td>
+                                                    <td>20s 116ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html">Submit Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8389e1ab7e654d24c100e30b6edafd310ce76b4d67dc87143557b9fea85c7f1c.html">Verify user input valid data</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td>17:21:01</td>
+                                                    <td>19s 744ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e2b29f71a74f32eda878eb4a61d3e08f1c07cee12743737e2bcc8eb4f8eb2e62.html">Mentee Home Page Menu Navigation</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="570a433d1c5460887a840846dfef80aaaae1831ad0888e2320d4858b5e5c6b68.html">Verify Mentee Home Page Menu Navigation and option visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>00:20:50</td>
+                                                    <td>22s 539ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e2b29f71a74f32eda878eb4a61d3e08f1c07cee12743737e2bcc8eb4f8eb2e62.html">Mentee Home Page Menu Navigation</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="98fc6922ff3d3a0bb4bf3839a48cb7b79b10be658ac9177f2ff68d82ca8af218.html">Verify Mentee Home Page Menu Navigation and option functionality</a>
+                                                    </td>
+                                                    <td>9</td>
+                                                    <td>00:21:14</td>
+                                                    <td>11s 847ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="1031cec9879f665b56df1e4e43317f8eba72abf1578b93148790a1ad89113e04.html">User's Name and Role</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="6f2afcff69b7c771d70508437e1d594c46d8600ae805f3e2f2f0e54f2b8d9d87.html">Verify User's role visibility</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>23:57:52</td>
+                                                    <td>10s 487ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="99c8016b7dd7282b1cfc207b1c0271033da64a06e9c5ebff81cebf2b207176a5.html">Mentee Task Page Title</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="aa88b136eb8da7d7c8fd0ed05a773f158f728a26a2383d9ab6d2c502a837fd47.html">Verify all element is visible using automated element locator on Mentee Page</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>01:16:32</td>
+                                                    <td>10s 515ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="7d12ffac23569729f4596debfaa29f3df257eed4a537f03a7a08adbf2351afc8.html">View More Comments and Hide Comments</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="e6bf59e682f0a668a82ea321e5208435855ec567cf514336bedf8d4bb251f699.html">Verify View All comment functionality</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>01:35:07</td>
+                                                    <td>10s 523ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result FAILURE">
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="5899ea688f77b38a3f66d4e2566081fa7681e655fbf88dd02c2309022d2c02ec.html">Verify register new member with Common Delimiter on field name</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>22:58:29</td>
+                                                    <td>15s 209ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr class="scenario-result FAILURE">
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d55f6bf0c0f3988be21773f7dd74a6914e8fadf6a194427f35573c33f40b5438.html">Verify register new member with Emoji on field name</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>22:59:08</td>
+                                                    <td>10s 066ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="72617bb4b62d64430bd9f79ddda515f2a4ef2c30cbcdec17b12c6e9cadccc3d6.html">Verify register new member without special char on field password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>23:05:57</td>
+                                                    <td>11s 242ms</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                            <table class="scenario-result-table table" id="manual-scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column" style="width:60em;">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                            <a href="ff18685df1284daccd8c7adeed45722b8ca4b11fca1237ecdbf7a1aabae8805b.html">Delete Button Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="bd6c6ef3e5d5b0740cf08cce6b025e9c09c051a2da3cd1cdf0f7635e9d5ca674.html">Verify deleting a class</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html">Admin Home Page Element Visibility and Locator</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ec3c9c8eb7ac1bacfc990bd4f7a0c39b44384d43c38e4c0e38c5c8b585eab0d5.html">Verify all element is visible using automated element locator</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html">User Login Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="caf6983c94cc71484e3c8d0c624897f80abaf92d09a83698319a4cd519a3a6b1.html">Verify user login with multiple tap on login button</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html">User Login Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f1db71687e826f8d4ad87cb1f4b6cab1426cf1b4e5ca2758a376f59a795d5ff8.html">Verify user login at the same times with different browser</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html">User Login Functionality</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="c5ffc1e8f17b09354018235a39891932c6b6ba7e0ec2b8ac6b578e68340f28bc.html">Verify accessing webapp after close without logout</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="1031cec9879f665b56df1e4e43317f8eba72abf1578b93148790a1ad89113e04.html">User's Name and Role</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="47039e279b0efd75aed7ee286c68326c6260439459ebe64e0e2f6e7f5e6bf04c.html">Verify User's name and role font size</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="59ce749c146958724e3382679f3150da515136d38382837815b45c6e75f90598.html">Verify Task Bar visibility when there is mentee due task</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8ed4b97df47fde9b5ed99bac428ef48d6edfe307f6e7888f2bb648d8492f740e.html">Verify Task Bar visibility when there is no mentee due task</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="9beeb7d96a510a03a27e387ff70185a5b7a24ebb18a5f13e61ab63ca653ee15c.html">Verify Task file visibility</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="fcca7c377317245f3646ee5c59ea8797c26aa2643a0c619a1454b72cdb9a0c29.html">Verify Task file redirect functionality</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f2e4eff6b2d817a8404c7d236e863ca56424dcc5e97ae04eaec29a4d97043eba.html">Verify Score visibility when reviewed</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="12cd9363615c31361baa0707275f7a57614a561008bc6641bc1fb8b5abbbe01e.html">Verify Score visibility when not reviewed</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="29406ecb72a4130f2f622118270abf6c948acfa7f2f56154df4c3763078e4108.html">Verify Submit your task visibility</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="62f76a4a9d891d141565102f568d711aa08325df47ef69fd9a38a8edb06b6b82.html">Verify Submit your task functionality</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="a4e84b5f93918e96a6255acf1b86ac363c21339851e153e257310056c1ac34c1.html">Verify user upload valid file format</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d5b29de0bb1a493c48ac5b340a6bb9870e0cf950dda29ea6f959062f586b2723.html">Verify user upload invalid file format</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="eaa588e11b787da8bec4038284200459c630c64fefd1b8d46e619a6f511ae9c4.html">Verify Task Bar Title font size</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="733525a5624af8d96298bf61efb8e1cfaa43a8920f163b623a90409b479feb30.html">Verify Task Title Font size and location</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="6f1d749a9540f0de0bd7eb26bda61e34db92b62cb9ad9775babc1ee84f55a587.html">Verify Task description Font size and location</a>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f46c666e46deea0a032b419d99814f020871e8b0d13b81dc5c8f1b4f82170647.html">Verify Due date Font config and location</a>
+                                                    </td>
+                                                    <td>8</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d7f2432a3ecc4ed9999a18250e417bac986f3276e5aace52b1e9494a4639d3d9.html">Verify Task file location</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html">Mentee Task Page Task Bar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="ab6a5660eeb62a38faeac3258f9ae9c6e13b4badb8cc62e87c4acd6deb608b5c.html">Verify Score location</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="3637ca0aa08119e75ef8128dba1a2d6c1c259c3f2b02c98ebc86b5d236497e9b.html">Verify if Role field can not be typed directly</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d947e44c50799c38849fd1a91fd9301f03f1a692645ab33cad5ceddf3a0bc12b.html">Verify password is masked when eye icon is not clicked</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                            <a href="afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html">Register New Member</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="02ac83100348c26e4d2479fcc6df71e0d2c6b154ba2405060015c01225fcef6a.html">Verify password is masked when eye icon is clicked</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon ' title='FAILURE'></i></a> <span
+                                                            style="display:none">FAILURE</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 3.3.4</span>
+        </div>
+    </div>
+</div>
+
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Scenarios', link: "50a0552b32d77f83ce485f5f36e3c65a65690c3ceda77cbbc1a72c60591b7172.html" },
+            { title: 'Pending Scenarios', link: "9500a1d91a5bf23ba1e735f43739b070dc5c93cf5151955335e621104f1843ad.html" },
+            { title: 'Ignored Scenarios', link: "f0c8346ddfaa40ed43e73eb389ece641a8b15383c640a9d94ce07945c65d1ac2.html" },
+            { title: 'Skipped Scenarios', link: "9dd1d37d9599f8fd6f86d0bffa91582f74cb11620a964bace81fa8bf79472413.html" },
+            { title: 'Aborted Scenarios',  link: "f5cdea3a9f691d8016f168b437ebe97f55acb991d2d70fe095cc6a47386f0188.html"},
+            { title: 'Failed Scenarios', link: "13e95c65361b86cb9c2a060590ce3327247df2ac8ac2e264f76aff6c70645a9e.html"  },
+            { title: 'Broken Scenarios', link: "4631513c37006ae0f08b642cd20de28f2591e7c9f7deb510bdfe8a69218288a7.html"    },
+            { title: 'Compromised Scenarios',  link: "e57063d5e90c6cc3789f713a4b3d0dd425cebdbfb48bcaa685ff1b3a8cea83fb.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing Scenarios', 'Pending Scenarios', 'Ignored Scenarios', 'Skipped Scenarios', 'Aborted Scenarios', 'Failed Scenarios', 'Broken Scenarios', 'Compromised Scenarios','Undefined Scenarios'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [{meta: 'Passing tests', value: 37}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 10}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "79%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "50a0552b32d77f83ce485f5f36e3c65a65690c3ceda77cbbc1a72c60591b7172.html" },
+            { title: 'Pending Scenarios', link: "9500a1d91a5bf23ba1e735f43739b070dc5c93cf5151955335e621104f1843ad.html" },
+            { title: 'Ignored Scenarios', link: "f0c8346ddfaa40ed43e73eb389ece641a8b15383c640a9d94ce07945c65d1ac2.html" },
+            { title: 'Skipped Scenarios', link: "9dd1d37d9599f8fd6f86d0bffa91582f74cb11620a964bace81fa8bf79472413.html" },
+            { title: 'Aborted Scenarios',  link: "f5cdea3a9f691d8016f168b437ebe97f55acb991d2d70fe095cc6a47386f0188.html"},
+            { title: 'Failed Scenarios', link: "13e95c65361b86cb9c2a060590ce3327247df2ac8ac2e264f76aff6c70645a9e.html"  },
+            { title: 'Broken Scenarios', link: "4631513c37006ae0f08b642cd20de28f2591e7c9f7deb510bdfe8a69218288a7.html"    },
+            { title: 'Compromised Scenarios',  link: "e57063d5e90c6cc3789f713a4b3d0dd425cebdbfb48bcaa685ff1b3a8cea83fb.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [17,0,0,0,0,5,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [20,0,0,0,0,5,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "905a0ade65f780fa27f9fd44b433392565add4723b0db81ee06dc14ceb602c37.html"},
+                {title: "1 to 10 seconds", link: "78879f6967a33fdb371c08feab9094b5a9b6acda76202fbce35e419caf80e4bc.html"},
+                {title: "10 to 30 seconds", link: "dd8fcadb440b6d41e2843c6ee297ff58c379c5356fc8ff935b5d53b58a22532a.html"},
+                {title: "30 to 60 seconds", link: "5a99602ad80c1b085a8d777bcd329fb0cb3014122d34239d90d8b738f6f45291.html"},
+                {title: "1 to 2 minutes", link: "6af61635f7000cffec9a01e5d9e1ead475e582e6aada390389a18c281afce856.html"},
+                {title: "2 to 5 minutes", link: "7e5073cc486cbfed603c017f718ec288310b7849a8b62e91f7614b378fc49894.html"},
+                {title: "5 to 10 minutes", link: "233a9d3a2437e234801d606c999f534b89859e46ce75f239df214bae8c76c2ed.html"},
+                {title: "10 minutes or over", link: "28853627287089ccf6f9468c54fdc3da68ac968b4fad73f695a7c379b7b0ff3d.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['0','0','47','0','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
+
+
+
+    <!-- COVERAGE BAR CHART -->
+    <script>
+
+        // The coverage bar chart
+        const coverageChartCtx = document.getElementById('coverageChart');
+
+        // Options define for display value on top of bars
+
+        const coverageReports = [
+            {
+                title: 'Admin Home Page Element Visibility and Locator',
+                result: 'SUCCESS',
+                link: "c0fbca33cd91618007529def116461f68f2d962a33fa0b7f89d281a91710d5a5.html"
+            },
+            {
+                title: 'Admin Home Page List User',
+                result: 'SUCCESS',
+                link: "2d66cf8aba0384945d7f851e7ec77d50d0c1203c46f2dd6f91f932799134d611.html"
+            },
+            {
+                title: 'Modal of Edit Users by Admin',
+                result: 'SUCCESS',
+                link: "fe028d2dae8c4ba148693e79d3ed0b60cd463511827247c8f39710efed23fc3a.html"
+            },
+            {
+                title: 'Submit Button Functionality',
+                result: 'SUCCESS',
+                link: "2164b88737bf9d9e15321b276b6b43be72c9c5c3b5ee7bfb8828217ab790d4dd.html"
+            },
+            {
+                title: 'Delete Button Functionality',
+                result: 'SUCCESS',
+                link: "ff18685df1284daccd8c7adeed45722b8ca4b11fca1237ecdbf7a1aabae8805b.html"
+            },
+            {
+                title: 'Edit Class Functionality',
+                result: 'SUCCESS',
+                link: "a51e3a59172e96202ccf67a79f78b354ab493679c83b3afa3d30cc17dd3bc21f.html"
+            },
+            {
+                title: 'Submit Button Functionality',
+                result: 'FAILURE',
+                link: "2c2377ffc38220c585c12da453c8696ea21c38ecbca84e2efe45e906ce97986d.html"
+            },
+            {
+                title: 'X Button Functionality',
+                result: 'SUCCESS',
+                link: "216368dc6316935f13c2c4cbb6d304dd03771e12218ba3a51c83a1c5fc929559.html"
+            },
+            {
+                title: 'User Login Functionality',
+                result: 'FAILURE',
+                link: "5bdc888fb7b5bc6f5ad83c33c7e00f5206786e3a19366521cdaed76fb7068a9e.html"
+            },
+            {
+                title: 'View More Comments and Hide Comments',
+                result: 'SUCCESS',
+                link: "bb72d87a6bf51a210d3cb81a0c1a8dbd04369df01c74cc85cd9a0c16e6fcf039.html"
+            },
+            {
+                title: 'Mentee Home Page Menu Navigation',
+                result: 'SUCCESS',
+                link: "e2b29f71a74f32eda878eb4a61d3e08f1c07cee12743737e2bcc8eb4f8eb2e62.html"
+            },
+            {
+                title: 'User\'s Name and Role',
+                result: 'SUCCESS',
+                link: "1031cec9879f665b56df1e4e43317f8eba72abf1578b93148790a1ad89113e04.html"
+            },
+            {
+                title: 'Mentee Task Page Task Bar',
+                result: 'FAILURE',
+                link: "9818be42820d9cea1eaa0952d2339fd0f0fe2b03d1e4f2754b62cb18989a68d3.html"
+            },
+            {
+                title: 'Mentee Task Page Title',
+                result: 'SUCCESS',
+                link: "99c8016b7dd7282b1cfc207b1c0271033da64a06e9c5ebff81cebf2b207176a5.html"
+            },
+            {
+                title: 'View More Comments and Hide Comments',
+                result: 'SUCCESS',
+                link: "7d12ffac23569729f4596debfaa29f3df257eed4a537f03a7a08adbf2351afc8.html"
+            },
+            {
+                title: 'Register New Member',
+                result: 'FAILURE',
+                link: "afb0e685423de4aa6403af4c9e025ab3357bb3abf5dd3f9f026adac5cbf3dabe.html"
+            },
+            {
+                title: 'Mentee Home Page Task Bar',
+                result: 'SUCCESS',
+                link: "3399267b6a609ae14be13575773f637d3469e522b51b6ad07958aee801b504a2.html"
+            },
+            {
+                title: 'Admin Home Page Title',
+                result: 'SUCCESS',
+                link: "03f172c33fe8089f977e1c67803528c1f1d8f504b647d3b5f85bcaa6e29316ce.html"
+            },
+            {
+                title: 'Admin Home Page Menu Navigation',
+                result: 'SUCCESS',
+                link: "bd31596548fc76890e23190226709f28684193dd81bcbac0903d040a2e3b86a2.html"
+            },
+            {
+                title: 'Add new member element visibility',
+                result: 'SUCCESS',
+                link: "b663069629bd95f586d332c06b88dcca0154e10a2d44d39d9bf830d9989708df.html"
+            },
+            {
+                title: 'Add Class by Admin',
+                result: 'SUCCESS',
+                link: "43063b4fdaba5f834da51596f614925d719e4d0e2663fc0cc889c9842819f463.html"
+            },
+            {
+                title: 'Mentee Task Page Menu Navigation',
+                result: 'SUCCESS',
+                link: "786ac2e8909d83079863e69d1e92f251fc739151e50b309a3cfe266f066fbbe6.html"
+            },
+            {
+                title: 'Element visibility and locator',
+                result: 'SUCCESS',
+                link: "3222c387bce8cb2cbe5ca8b76d4dc06b801c464658585b0d3b0abaa301c9476e.html"
+            },
+            {
+                title: 'View All Task Button',
+                result: 'SUCCESS',
+                link: "03cb432de0aa458d18303a7a5b0c4fdf68c0fac4f7c17b3c10f6fc167041913e.html"
+            },
+            {
+                title: 'Hero Pics and Message',
+                result: 'SUCCESS',
+                link: "4be36205d6b846eea3fe758898f74daaf1b37d2c72a38e0111dca0e6b7509a02.html"
+            },
+            {
+                title: 'Mentee Home Page Title',
+                result: 'SUCCESS',
+                link: "e130d72309dc30894330c69a91f6209a0a41590bfdc39e1b66fb6c970513722b.html"
+            },
+            {
+                title: 'Element Visibility and Locator mentee task',
+                result: 'SUCCESS',
+                link: "c4a8b2f099ab7017097c410a9561b3ef2feec82c5948adc4e74ed35deee0922d.html"
+            },
+            {
+                title: 'Mentor post a comment',
+                result: 'SUCCESS',
+                link: "0afbd21bfd7642dee17bcd5b76b6f2ed1497c9b99d51e904d8d377a4f61f1176.html"
+            },
+        ]
+        const coverageData = {
+            labels: [
+                'Admin Home Page Element Visibility and Locator',
+                'Admin Home Page List User',
+                'Modal of Edit Users by Admin',
+                'Submit Button Functionality',
+                'Delete Button Functionality',
+                'Edit Class Functionality',
+                'Submit Button Functionality',
+                'X Button Functionality',
+                'User Login Functionality',
+                'View More Comments and Hide Comments',
+                'Mentee Home Page Menu Navigation',
+                'User\'s Name and Role',
+                'Mentee Task Page Task Bar',
+                'Mentee Task Page Title',
+                'View More Comments and Hide Comments',
+                'Register New Member',
+                'Mentee Home Page Task Bar',
+                'Admin Home Page Title',
+                'Admin Home Page Menu Navigation',
+                'Add new member element visibility',
+                'Add Class by Admin',
+                'Mentee Task Page Menu Navigation',
+                'Element visibility and locator',
+                'View All Task Button',
+                'Hero Pics and Message',
+                'Mentee Home Page Title',
+                'Element Visibility and Locator mentee task',
+                'Mentor post a comment',
+            ],
+            datasets: [
+                {
+                    label: ['Passing Tests'],
+                    data: [1,1,1,1,2,3,2,3,1,1,2,2,15,1,1,2,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(153,204,51,0.5)' ]
+                },
+                {
+                    label: ['Pending Tests'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(165, 199, 238, 0.5)' ]
+                },
+                {
+                    label: ['Ignored Tests'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(168, 168, 168, 0.5)' ]
+                },
+                {
+                    label: ['Skipped Tests'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(238, 224, 152, 0.75)' ]
+                },
+                {
+                    label: ['Aborted Tests'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 153, 102, 0.5)' ]
+                },
+                {
+                    label: ['Failed Tests'],
+                    data: [null,null,null,null,null,null,3,null,2,null,null,null,1,null,null,4,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 22, 49, 0.5)' ]
+                },
+                {
+                    label: ['Errors'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
+                },
+                {
+                    label: ['Compromised Tests'],
+                    data: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+                    backgroundColor: [ 'rgba(255, 104, 255, 0.5)' ]
+                },
+            ]
+        }
+        const coverageOptions = {
+            responsive: true,
+            indexAxis: 'y',
+            // barPercentage: ,
+            barThickness: 'flex',
+            maxBarThickness: 30,
+            minBarLength: 2,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold'
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                },
+            },
+        }
+
+        const coverageChart = new Chart(coverageChartCtx, {
+            type: 'bar',
+            data: coverageData,
+            options: coverageOptions
+        });
+
+        function coverageClickHandler(click) {
+            const points = coverageChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                if (coverageReports[firstPoint.index].link) {
+                    window.open(coverageReports[firstPoint.index].link, "_self")
+                }
+            }
+        }
+
+        coverageChartCtx.onclick = coverageClickHandler;
+    </script>
+    <!-- END COVERAGE CHART -->
+
+</body>
+</html>

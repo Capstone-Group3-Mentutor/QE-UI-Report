@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Admin Home Page Title","Verify Page Title location","SUCCESS","2022-11-13T16:41:42.96+07:00[Asia/Bangkok]","0.0","0.01"
+"Admin Home Page Title","Verify Page Title contains correct message","SUCCESS","2022-11-13T17:21:32.681+07:00[Asia/Bangkok]","0.0","6.79"

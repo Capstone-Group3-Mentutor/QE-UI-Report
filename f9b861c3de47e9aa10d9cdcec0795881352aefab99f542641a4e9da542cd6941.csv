@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify max length allowed text input on password field","ERROR","2022-11-10T22:05:28.396+07:00[Asia/Bangkok]","0.0","189.6"
+"User Login Functionality","Verify whether password field is case sensitive","ERROR","2022-11-10T22:10:21.1+07:00[Asia/Bangkok]","0.0","189.62"
+"User Login Functionality","Verify user login with multiple tap on login button","ERROR","2022-11-10T22:15:40.856+07:00[Asia/Bangkok]","0.0","189.58"
+"User Login Functionality","Verify user login at the same times with different browser","ERROR","2022-11-10T22:18:50.441+07:00[Asia/Bangkok]","0.0","193.88"
+"User Login Functionality","Verify data inputted was cleaned while page refreshed","ERROR","2022-11-10T22:29:10.255+07:00[Asia/Bangkok]","0.0","153.93"
+"User Login Functionality","Verify critical element visibility when windows resized","PENDING","2022-11-10T22:31:45.186+07:00[Asia/Bangkok]","0.0","175.42"

@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Delete Button Functionality","Verify pop up window shown before deleting","SUCCESS","2022-11-13T20:12:26.35+07:00[Asia/Bangkok]","0.0","45.81"
+"Edit Class Functionality","Input Special Character on edit class field","SUCCESS","2022-11-13T21:39:46.942+07:00[Asia/Bangkok]","0.0","34.83"
+"Submit Button Functionality","Input ""<valid data>"" with maximum character allowed on edit class field and choose active class","SUCCESS","2022-11-13T21:43:39.16+07:00[Asia/Bangkok]","0.0","54.47"
+"Submit Button Functionality","Input ""<valid data>"" with maximum character allowed on edit class field and choose inactive class","SUCCESS","2022-11-13T21:56:03.363+07:00[Asia/Bangkok]","0.0","40.68"
+"X Button Functionality","Input valid data on edit class field","SUCCESS","2022-11-13T21:44:34.755+07:00[Asia/Bangkok]","0.0","39.2"
+"X Button Functionality","Input valid data and choose inactive class","SUCCESS","2022-11-13T21:45:38.842+07:00[Asia/Bangkok]","0.0","30.83"
+"Mentee Task Page Menu Navigation","Verify Mentee Task Page Menu Navigation and option functionality","SUCCESS","2022-11-14T00:36:06.319+07:00[Asia/Bangkok]","0.0","32.78"

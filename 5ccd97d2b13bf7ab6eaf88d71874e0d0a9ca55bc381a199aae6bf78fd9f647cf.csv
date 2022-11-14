@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Mentor Profile Page's Profile Picture","Verify User Profile picture location","SUCCESS","2022-11-14T02:04:50.185+07:00[Asia/Bangkok]","0.0","0.13"
+"Mentor Profile Page's Profile Picture","Verify User Profile picture not interactable","SUCCESS","2022-11-14T02:04:50.395+07:00[Asia/Bangkok]","0.0","0.07"
+"Mentor Profile Page's Profile Picture","Verify Mentor profile detail location","SUCCESS","2022-11-14T02:04:50.524+07:00[Asia/Bangkok]","0.0","0.05"

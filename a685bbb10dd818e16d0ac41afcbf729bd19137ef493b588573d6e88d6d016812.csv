@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User Login Functionality","Verify user login at the same times with different browser","ERROR","2022-11-11T02:24:32.203+07:00[Asia/Bangkok]","0.0","23.96"
+"User Login Functionality","Verify accessing webapp after close without logout","ERROR","2022-11-11T02:25:09.495+07:00[Asia/Bangkok]","0.0","85.01"

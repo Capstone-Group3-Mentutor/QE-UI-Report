@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"View More Comments and Hide Comments","Verify View All comment functionality","ERROR","2022-11-13T23:35:39.742+07:00[Asia/Bangkok]","0.0","18.67"
+"View More Comments and Hide Comments","Verify Hide All comment functionality","ERROR","2022-11-13T23:36:01.481+07:00[Asia/Bangkok]","0.0","13.61"
+"Mentor post a comment","Verify create new comments","ERROR","2022-11-13T23:36:16.304+07:00[Asia/Bangkok]","0.0","7.07"
